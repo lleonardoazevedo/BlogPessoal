@@ -1,6 +1,6 @@
 package org.generation.BlogPessoal.repository;
 
-import java.util.List;
+
 import java.util.Optional;
 
 import org.generation.BlogPessoal.model.Usuario;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 	/**
-	 * Metodo utilizado para realizar pesquisa pela coluna email da tabela usuario
+	 * Metodo utilizado para realizar pesquisa pela coluna usuario
 	 * 
 	 * @param email
 	 * @return Optional com Usuario
@@ -19,7 +19,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	 * @since 1.0
 	 * 
 	 */
-	public Optional<Usuario> findByEmail(String email);
+	public Optional<Usuario> findByUsuario(String usuario);
+	
+	public Optional<Usuario> findByEmailUsuario(String email);
 
 	/**
 	 * Metodo utilizado para realizar spesquisa pela coliuna nome da tabela usuario
@@ -30,6 +32,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	 * @since 1.0
 	 * 
 	 */
-	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
+//	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
 
 }

@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import com.sun.istack.NotNull;
 
 /**
  * classe espelho da tabela usario no banco db_blogpessoal
@@ -13,19 +17,31 @@ import javax.persistence.Id;
  */
 
 @Entity
+@Table(name = "tb_usuario")
 public class Usuario {
 
-	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long idUsaurio;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+
+	@NotNull
+	@Size(min = 2, max = 100)
 	private String nome;
-	private String email;
+
+	@NotNull
+	@Size(min = 2, max = 100)
+	private String usuario;
+
+	@NotNull
+	@Size(min = 2, max = 100)
 	private String senha;
 
-	public Long getIdUsaurio() {
-		return idUsaurio;
+	public long getId() {
+		return id;
 	}
 
-	public void setIdUsaurio(Long idUsaurio) {
-		this.idUsaurio = idUsaurio;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -36,12 +52,12 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
