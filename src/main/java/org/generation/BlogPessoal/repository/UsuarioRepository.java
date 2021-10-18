@@ -21,7 +21,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	 */
 	public Optional<Usuario> findByUsuario(String usuario);
 	
-	public Optional<Usuario> findByEmailUsuario(String email);
+	public Optional<Usuario> findByEmail(String email);
 
 	/**
 	 * Metodo utilizado para realizar spesquisa pela coliuna nome da tabela usuario

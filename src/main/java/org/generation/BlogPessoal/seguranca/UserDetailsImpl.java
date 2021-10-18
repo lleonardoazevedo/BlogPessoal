@@ -1,6 +1,7 @@
 package org.generation.BlogPessoal.seguranca;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.generation.BlogPessoal.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,12 +11,14 @@ public class UserDetailsImpl implements UserDetails {
 //essa classe user details serve pra especificar email e senha para o spring	
 	public static final long serialVersionUID = 1l;
 
-	private String userName;
+	private String email;
 	private String password;
 	
+	private List<GrantedAuthority> autorizacoes;
+
 	
 	public UserDetailsImpl(Usuario user) {
-		this.userName = user.getUsuario();
+		this.email = user.getEmail();
 		this.password = user.getSenha();
 		
 	}
@@ -25,7 +28,7 @@ public class UserDetailsImpl implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return null;
+		return autorizacoes;
 	}
 
 	@Override
@@ -37,7 +40,7 @@ public class UserDetailsImpl implements UserDetails {
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return userName;
+		return email;
 	}
 
 	@Override
