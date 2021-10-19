@@ -15,10 +15,16 @@ public class UserDetailsImpl implements UserDetails {
 	private String password;
 	
 	private List<GrantedAuthority> autorizacoes;
+<<<<<<< HEAD
 
 	
 	public UserDetailsImpl(Usuario user) {
 		this.email = user.getEmail();
+=======
+	
+	public UserDetailsImpl(Usuario user) {
+		this.userName = user.getEmail();
+>>>>>>> main
 		this.password = user.getSenha();
 		
 	}

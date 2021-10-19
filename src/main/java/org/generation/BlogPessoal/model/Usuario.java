@@ -38,9 +38,11 @@ public class Usuario {
 	@Size(min = 2, max = 100)
 	private String nome;
 
-	@NotNull
+	@ApiModelProperty(example = "email@email.com.br")
+	@Email(message = "O atributo Usuário deve ser um email válido!")
+	@NotBlank(message = "O atributo Usuário é Obrigatório!")
 	@Size(min = 2, max = 100)
-	private String usuario;
+	private String email;
 
 	
 	@ApiModelProperty(example = "email@email.com.br") //swagger
@@ -53,10 +55,25 @@ public class Usuario {
 	@Size(min = 2, max = 100)
 	private String senha;
 
+<<<<<<< HEAD
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties({ "tema" })
 	private List<Postagem> minhasPostagens = new ArrayList<>();
 
+=======
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("tema")
+	private List<Postagem> postagem = new ArrayList<>();
+	
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}
+	
+>>>>>>> main
 	public long getId() {
 		return id;
 	}
@@ -73,12 +90,12 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {

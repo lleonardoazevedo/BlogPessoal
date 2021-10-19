@@ -32,17 +32,26 @@ public class UsuarioService {
         Optional<Usuario> usuario = repository.findByEmail(user.get().getEmail());
 
         if(usuario.isPresent()){
+<<<<<<< HEAD
             if(encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
                 String auth = user.get().getEmail() + ":" + user.get().getSenha();
+=======
+            if(encoder.matches(user.get().getSenha(), usuario.get().getEmail())) {
+                String auth = user.get().getSenha() + ":" + usuario.get().getEmail();
+>>>>>>> main
                 byte[] encodeAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
                 String authHeader = "Basic " + new String(encodeAuth);
 
                 user.get().setToken(authHeader);
                 user.get().setNome(usuario.get().getNome());
+<<<<<<< HEAD
                 user.get().setId(usuario.get().getId());
 				user.get().setSenha(usuario.get().getSenha());
 				user.get().setEmail(usuario.get().getEmail());
 
+=======
+                user.get().setSenha(usuario.get().getSenha());
+>>>>>>> main
 
                 return user;
             }
