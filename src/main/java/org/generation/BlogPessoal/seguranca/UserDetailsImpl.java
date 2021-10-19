@@ -11,19 +11,18 @@ public class UserDetailsImpl implements UserDetails {
 //essa classe user details serve pra especificar email e senha para o spring	
 	public static final long serialVersionUID = 1l;
 
-	private String userName;
+	private String email;
 	private String password;
-	
 	private List<GrantedAuthority> autorizacoes;
-	
+
 	public UserDetailsImpl(Usuario user) {
-		this.userName = user.getEmail();
+		this.email = user.getEmail();
 		this.password = user.getSenha();
-		
 	}
-	
-	public UserDetailsImpl() {}
-	
+
+	public UserDetailsImpl() {
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -39,7 +38,7 @@ public class UserDetailsImpl implements UserDetails {
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return userName;
+		return email;
 	}
 
 	@Override
