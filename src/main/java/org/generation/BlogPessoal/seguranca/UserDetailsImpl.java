@@ -13,24 +13,16 @@ public class UserDetailsImpl implements UserDetails {
 
 	private String email;
 	private String password;
-	
 	private List<GrantedAuthority> autorizacoes;
-<<<<<<< HEAD
 
-	
 	public UserDetailsImpl(Usuario user) {
 		this.email = user.getEmail();
-=======
-	
-	public UserDetailsImpl(Usuario user) {
-		this.userName = user.getEmail();
->>>>>>> main
 		this.password = user.getSenha();
-		
 	}
-	
-	public UserDetailsImpl() {}
-	
+
+	public UserDetailsImpl() {
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
