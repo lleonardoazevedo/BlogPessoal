@@ -1,13 +1,23 @@
 package org.generation.BlogPessoal.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * classe espelho da tabela usario no banco db_blogpessoal
@@ -28,14 +38,28 @@ public class Usuario {
 	@Size(min = 2, max = 100)
 	private String nome;
 
-	@NotNull
+	@ApiModelProperty(example = "email@email.com.br")
+	@Email(message = "O atributo Usuário deve ser um email válido!")
+	@NotBlank(message = "O atributo Usuário é Obrigatório!")
 	@Size(min = 2, max = 100)
-	private String usuario;
+	private String email;
 
 	@NotNull
 	@Size(min = 2, max = 100)
 	private String senha;
 
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("tema")
+	private List<Postagem> postagem = new ArrayList<>();
+	
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -52,12 +76,12 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {
