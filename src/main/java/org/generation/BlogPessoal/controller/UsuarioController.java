@@ -36,7 +36,7 @@ public class UsuarioController {
 	
 	
 	@GetMapping("/todes")
-	public ResponseEntity<List<Usuario>> pegarTodes() {
+	public ResponseEntity<List<Usuario>> getAll() {
 		if(repositorio.findAll().isEmpty()) {
 		//List<Usuario> objetoLista = repositorio.findAll();
 		return ResponseEntity.status(204).build();
