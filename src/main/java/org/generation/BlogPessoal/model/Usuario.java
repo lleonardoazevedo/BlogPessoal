@@ -3,6 +3,7 @@ package org.generation.BlogPessoal.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,8 +40,8 @@ public class Usuario {
 	private String nome;
 
 	@ApiModelProperty(example = "email@email.com.br")
-	@Email(message = "O atributo Usuário deve ser um email válido!")
-	@NotBlank(message = "O atributo Usuário é Obrigatório!")
+	@Email(message = "O atributo email deve ser válido!")
+	@NotBlank(message = "O atributo email é Obrigatório!")
 	@Size(min = 2, max = 100)
 	private String email;
 

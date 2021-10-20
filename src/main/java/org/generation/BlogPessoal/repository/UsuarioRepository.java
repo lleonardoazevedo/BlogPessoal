@@ -1,6 +1,7 @@
 package org.generation.BlogPessoal.repository;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.generation.BlogPessoal.model.Usuario;
@@ -19,9 +20,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	 * @since 1.0
 	 * 
 	 */
-	public Optional<Usuario> findByUsuario(String usuario);
-	
 	public Optional<Usuario> findByEmail(String email);
+	
+	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
 
 	/**
 	 * Metodo utilizado para realizar spesquisa pela coliuna nome da tabela usuario
